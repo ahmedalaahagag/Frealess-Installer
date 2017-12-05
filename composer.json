@@ -1,0 +1,31 @@
+{
+  "name": "frealess/installer",
+  "description": "frealess application installer.",
+  "keywords": [
+    "frealess",
+    "tiny-framwork"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ahmed Jamal",
+      "email": "eng.ahmed_gamal@yahoo.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "FrealessInstaller\\": "src/"
+    }
+  },
+  "require": {
+    "ext-zip": "*",
+    "guzzlehttp/guzzle": "~4.0|~5.0|~6.0",
+    "symfony/console": "~2.3|~3.0",
+    "symfony/filesystem": "~2.3|~3.0",
+    "symfony/process": "~2.3|~3.0"
+  },
+  "bin": [
+    "frealess"
+  ]
+}
+
