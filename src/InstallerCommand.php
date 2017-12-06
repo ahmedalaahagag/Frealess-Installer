@@ -51,7 +51,7 @@ class InstallerCommand extends \Symfony\Component\Console\Command\Command
             "cd " . $directory . "/tiny-framwork-master",
             $composer . ' update',
         ];
-        var_dump($commands);
+
         $process = new Process(implode(' && ', $commands), $directory, null, null, null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
