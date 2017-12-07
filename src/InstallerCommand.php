@@ -1,30 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ahmed
- * Date: 12/5/17
- * Time: 1:56 PM
- */
-
 namespace FrealessInstaller;
 
 use Symfony\Component\Process\Process;
-use ZipArchive;
 use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-
+use ZipArchive;
 
 class InstallerCommand extends \Symfony\Component\Console\Command\Command
 {
-    protected $repoUrl = "https://github.com/ahmedalaahagag/tiny-framwork/archive/master.zip";
+    protected $repoUrl = "https://github.com/ahmedalaahagag/tiny-framework/archive/master.zip";
 
     protected function configure()
     {
         $this
             ->setName('new')
-            ->setDescription('Creates a new frealess app.')
-            ->setHelp('This command allows you to create a new frealess app ..')
+            ->setDescription('Creates a new app from a repo.')
+            ->setHelp('This command allows you to create a new from a repo ..')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of app.');
     }
 
@@ -47,8 +39,9 @@ class InstallerCommand extends \Symfony\Component\Console\Command\Command
 
 
         $commands = [
-            "pwd",
-            "cd " . $directory . "/tiny-framwork-master",
+            "cd ..",
+            "cd " . $directory . "/tiny-framework-master",
+            "mv -v * ..",
             $composer . ' update',
         ];
 
@@ -62,7 +55,7 @@ class InstallerCommand extends \Symfony\Component\Console\Command\Command
             $output->write($line);
         });
 
-        $output->writeln('<comment>Done</comment>');
+        $output->writeln('<comment>Awesome '.$input->getArgument('name').' App Created</comment>');
     }
 
 
